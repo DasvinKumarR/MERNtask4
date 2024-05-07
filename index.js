@@ -64,7 +64,7 @@ for(let i in resume){
     }
 }
 
-//used all fro loops in here to iterate
+//used all for loops in here to iterate
 console.log("Type two:")
 for(let i of Object.keys(resume)){ //for of loop
     let temp = resume[i]
@@ -86,3 +86,49 @@ for(let i of Object.keys(resume)){ //for of loop
         }
     }
 }
+
+///Using For of loop alone
+console.log("Type Three:")
+for(let i of resume){
+    let temp = i
+    for(let j of Object.keys(temp)){
+        if(typeof temp[j] === 'object'){
+            let Jin = temp[j]
+            console.log(j)
+            for(let k of Object.keys(Jin)){
+                let regex = /\d/g
+                let bool = regex.test(k)
+                if(bool===false){
+                    console.log(k, Jin[k]) 
+                }else{
+                    console.log(Jin[k])
+                } 
+            }
+        }else{
+            console.log(j, temp[j])
+        } 
+    }
+}
+
+//Using For Each  loop
+console.log("Type Four")
+Object.keys(resume).forEach((e)=>{
+    let temp = resume[e]
+    Object.keys(temp).forEach((j)=>{
+        if(typeof temp[j] === 'object'){
+            let Jin = temp[j]
+            console.log(j)
+            Object.keys(Jin).forEach((k)=>{
+                let regex = /\d/g
+                let bool = regex.test(k)
+                if(bool===false){
+                    console.log(k, Jin[k]) 
+                }else{
+                    console.log(Jin[k])
+                } 
+            })
+        }else{
+            console.log(j, temp[j])
+        }
+    })
+})
